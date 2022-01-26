@@ -1,7 +1,9 @@
+import { RouterView } from './routes/Routes'
+
 import './App.css'
 
 function App() {
-  return <div className="App">APP</div>
+  return <RouterView />
 }
 
 export default App
