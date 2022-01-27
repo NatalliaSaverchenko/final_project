@@ -1,5 +1,6 @@
 export const ROUTE_NAMES = {
   LOGIN: '/',
 
-  // POKEMONS_DETAIL: '/pokemons/:pokemonName',
+  PRODUCTS: '/products',
+  PRODUCTS_DETAIL: '/products_detail',
 }
