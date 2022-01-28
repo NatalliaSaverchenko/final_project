@@ -1,5 +1,5 @@
 export const ROUTE_NAMES = {
-  LOGIN: '/',
+  LOGIN: '/login',
 
   PRODUCTS: '/products',
   PRODUCTS_DETAIL: '/products_detail',

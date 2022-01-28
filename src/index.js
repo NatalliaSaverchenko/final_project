@@ -16,13 +16,13 @@ const persistor = persistStore(store)
 
 ReactDOM.render(
   <React.StrictMode>
-    <HashRouter>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <HashRouter>
           <App />
-        </PersistGate>
-      </Provider>
-    </HashRouter>
+        </HashRouter>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 )

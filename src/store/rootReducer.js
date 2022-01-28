@@ -1,11 +1,11 @@
-import storage from 'redux-persist/es/storage'
+import storage from 'redux-persist/lib/storage'
 import { persistReducer } from 'redux-persist'
-import createBlackListFilter from 'redux-persist-transform-filter'
+import { createBlacklistFilter } from 'redux-persist-transform-filter'
 
 import { combineReducers } from 'redux'
 import { authReducer } from '../pages/Login/reducers'
 
-const authBlackListedFields = createBlackListFilter('auth', [
+const authBlackListedFields = createBlacklistFilter('auth', [
   'isLoading',
   'errors',
 ])
