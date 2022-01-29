@@ -4,6 +4,7 @@ import AuthService from '../services/authService'
 export const apiCallsMapping = (action) => {
   const actionCallMap = {
     [loginActions.SIGN_IN_REQUEST]: AuthService.signIn,
+    [loginActions.SIGN_UP_REQUEST]: AuthService.signUp,
   }
 
   //   если забыли добавить request

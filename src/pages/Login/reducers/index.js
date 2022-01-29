@@ -8,6 +8,7 @@ const defaultState = {
   userData: {},
   accessToken: null,
   isAuth: false,
+  message: '',
 }
 
 export const authReducer = handleActions(
@@ -31,6 +32,26 @@ export const authReducer = handleActions(
       }
     },
     [actions.SIGN_IN_FAIL]: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      errors: payload.response,
+    }),
+    [actions.SIGN_UP_REQUEST]: (state) => ({
+      ...state,
+      isLoading: true,
+      errors: null,
+    }),
+    [actions.SIGN_UP_SUCCESS]: (state, { payload }) => {
+      const { message } = payload.response
+      alert(message)
+
+      return {
+        ...state,
+        isLoading: false,
+        message,
+      }
+    },
+    [actions.SIGN_UP_FAIL]: (state, { payload }) => ({
       ...state,
       isLoading: false,
       errors: payload.response,
