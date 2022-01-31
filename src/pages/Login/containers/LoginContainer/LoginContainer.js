@@ -7,11 +7,14 @@ import { useEffect, useState } from 'react'
 import { authSelector } from '../../selectors'
 import { ROUTE_NAMES } from '../../../../routes/routeNames'
 import { RegistrationForm } from '../../components/RegistrationForm/RegistrationForm'
+import Button from '../../components/ButtonWrapper/ButtonWrapper'
+import { Grid } from '@material-ui/core'
 
 export const LoginContainer = () => {
   const [isLoginformVisible, setIsLoginformVisible] = useState(false)
   const [isRegisterformVisible, setIsRegisterformVisible] = useState(false)
 
+  const { message } = useSelector(authSelector)
   const dispatch = useDispatch()
   const { isAuth } = useSelector(authSelector)
   const { formValues, handleChange, handleReset } = useForm({
@@ -42,8 +45,21 @@ export const LoginContainer = () => {
 
   return (
     <div>
-      <button onClick={loginformActive}>Sign In</button>
-      <button onClick={registerformActive}>Sign Up</button>
+      <Grid
+        container
+        spacing={8}
+        direction="row"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Grid item xs={3}>
+          <Button onClick={loginformActive}>Sign In</Button>
+        </Grid>
+        <Grid item xs={3}>
+          <Button onClick={registerformActive}>Sign Up</Button>
+        </Grid>
+      </Grid>
+
       {isLoginformVisible && (
         <LoginForm
           formData={formValues}
@@ -54,6 +70,7 @@ export const LoginContainer = () => {
       {isRegisterformVisible && (
         <RegistrationForm handleSignUp={handleSignUp} />
       )}
+      {message && <p>{message}</p>}
     </div>
   )
 }

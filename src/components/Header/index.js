@@ -5,6 +5,8 @@ import { authSelector } from '../../pages/Login/selectors'
 import { NAVIGATION } from './config'
 import AuthService from '../../services/authService'
 
+import styles from './Header.module.css'
+
 export const Header = () => {
   const { isAuth } = useSelector(authSelector)
   const navigationItems = useMemo(() => {
@@ -12,13 +14,19 @@ export const Header = () => {
     return NAVIGATION[targetNavigationItems]
   }, [isAuth])
   return (
-    <div>
-      {navigationItems.map(({ title, path }) => (
-        <div key={title}>
-          <NavLink to={path}>{title}</NavLink>
+    <header className={styles.header}>
+      <div className='container'>
+        <div className={styles.header__row}>
+          {navigationItems.map(({ title, path }) => (
+            <div key={title}>
+              <NavLink to={path}>{title}</NavLink>
+            </div>
+          ))}
+          {isAuth && (
+            <button onClick={() => AuthService.signOut()}>Logout</button>
+          )}
         </div>
-      ))}
-      {isAuth && <button onClick={() => AuthService.signOut()}>Logout</button>}
-    </div>
+      </div>
+    </header>
   )
 }

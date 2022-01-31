@@ -1,3 +1,6 @@
+import Button from '../ButtonWrapper/ButtonWrapper'
+import { Grid, Input, TextField, Typography } from '@material-ui/core'
+
 export const LoginForm = ({
   formData,
   handleFormChange,
@@ -5,21 +8,42 @@ export const LoginForm = ({
   errors,
 }) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        name="email"
-        value={formData.email}
-        onChange={handleFormChange}
-      />
-      <input
-        type="password"
-        name="password"
-        value={formData.password}
-        onChange={handleFormChange}
-      />
-      <button>Login</button>
-      {errors && <p>{errors}</p>}
-    </form>
+    <Grid 
+      container
+      spacing={2}
+      direction="row"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <Grid item xs={12}>
+        <Typography/>
+      </Grid>
+      <form onSubmit={handleSubmit}>
+        <Grid item xs={12}>
+          <TextField
+            fullWidth={true}
+            variant="outlined"
+            type="email"
+            name="email"
+            label="Email"
+            value={formData.email}
+            onChange={handleFormChange}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            fullWidth={true}
+            variant="outlined"
+            type="password"
+            name="password"
+            label="Password"
+            value={formData.password}
+            onChange={handleFormChange}
+          />
+        </Grid>
+        <Button type="submit">Login</Button>
+        {errors && <p>{errors}</p>}
+      </form>
+    </Grid>
   )
 }
