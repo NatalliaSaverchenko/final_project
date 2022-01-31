@@ -1,0 +1,13 @@
+.header {
+  height: 50px;
+  background-color:  #7AC751;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header__row {
+  display: flex;
+  justify-content: space-between;
+ 
+  
+}
